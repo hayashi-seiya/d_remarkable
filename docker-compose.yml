@@ -44,6 +44,7 @@ services:
       APP_DATABASE_USERNAME: root
       APP_DATABASE_PASSWORD: pass
       APP_DATABASE_HOST: db
+    env_file: .envrc
 volumes:
   db_data:
   bundle_install:
