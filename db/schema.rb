@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180526100306) do
+ActiveRecord::Schema.define(version: 20180526102727) do
 
   create_table "attractions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
     t.bigint "park_id"
@@ -33,6 +33,16 @@ ActiveRecord::Schema.define(version: 20180526100306) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "restaurants", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
+    t.bigint "park_id"
+    t.string "name", null: false
+    t.time "business_hours_open"
+    t.time "business_hours_close"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["park_id"], name: "index_restaurants_on_park_id"
+  end
+
   create_table "shows", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
     t.bigint "park_id"
     t.string "name", null: false
@@ -46,5 +56,6 @@ ActiveRecord::Schema.define(version: 20180526100306) do
   end
 
   add_foreign_key "attractions", "parks"
+  add_foreign_key "restaurants", "parks"
   add_foreign_key "shows", "parks"
 end
