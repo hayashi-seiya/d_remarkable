@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180526091519) do
+ActiveRecord::Schema.define(version: 20180526095808) do
+
+  create_table "attractions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
+    t.bigint "park_id"
+    t.string "name", null: false
+    t.integer "duration_time", comment: "所要時間"
+    t.integer "waiting_time", null: false, comment: "待ち時間"
+    t.boolean "fastpass_flag", comment: "ファストパスが発券できるか"
+    t.time "business_hours_open"
+    t.time "business_hours_close"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["park_id"], name: "index_attractions_on_park_id"
+  end
 
   create_table "parks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin" do |t|
     t.string "name", null: false
@@ -20,4 +33,5 @@ ActiveRecord::Schema.define(version: 20180526091519) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "attractions", "parks"
 end
