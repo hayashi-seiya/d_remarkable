@@ -1,4 +1,4 @@
-class Scraping
+class Scraping::DisneyLand
   require "open-uri"
 
   class << self
