@@ -22,19 +22,17 @@ class Scraping::DisneyLand
     def scraping
       doc = document_by_html
 
+      # TODO: ul.wait-timeないのh4を取り出せるように
       doc.xpath("//h4").each do |node|
         puts node.inner_text
       end
     end
 
     def document_by_html
-      charset = nil
+      html = open(url).read
 
-      html = open(url) do |f|
-        charset = f.charset
-        f.read
-      end
-
-      Nokogiri::HTML.parse(html, nil, charset)
+      # 文字ボケの対策のために強制的にutf-8に変換
+      # ref: https://qiita.com/foloinfo/items/435f0409a6e33929ef3c
+      Nokogiri::HTML.parse(html, nil, "utf-8")
     end
 end
