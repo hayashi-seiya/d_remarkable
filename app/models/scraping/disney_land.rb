@@ -22,8 +22,7 @@ class Scraping::DisneyLand
     def scraping
       doc = document_by_html
 
-      # TODO: ul.wait-timeないのh4を取り出せるように
-      doc.xpath("//h4").each do |node|
+      doc.xpath("//ul[@class='wait-time']//h4").each do |node|
         puts node.inner_text
       end
     end
