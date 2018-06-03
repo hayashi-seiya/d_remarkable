@@ -67,3 +67,6 @@ gem "nokogiri"
 
 # instead of seed
 gem "seed-fu"
+
+# bulk insert
+gem "activerecord-import"
