@@ -64,3 +64,6 @@ gem "slim-rails"
 
 # scraping
 gem "nokogiri"
+
+# instead of seed
+gem "seed-fu"
