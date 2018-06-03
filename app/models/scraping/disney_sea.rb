@@ -50,7 +50,10 @@ class Scraping::DisneySea
       attraction_params << attraction_param
     end
 
-    Attraction.import(attraction_params)
+    Attraction.import attraction_params, on_duplicate_key_update: [:duration_time,
+                                                                   :waiting_time,
+                                                                   :business_hours_open,
+                                                                   :business_hours_close]
   end
 
   # TODO: テスト書き終わったらこのコメントは消す

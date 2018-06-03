@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20180526103244) do
     t.time "business_hours_close"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_attractions_on_name", unique: true
     t.index ["park_id"], name: "index_attractions_on_park_id"
   end
 
