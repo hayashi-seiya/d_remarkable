@@ -23,3 +23,16 @@ AllCops:
     - "Guardfile"
     - "db/migrate/**/*"
     - 'frontend/**/*'
+
+Security/Open:
+  Exclude:
+    - "app/models/scraping/disney_land.rb"
+    - "app/models/scraping/disney_sea.rb"
+Metrics/MethodLength:
+  Exclude:
+    - "app/models/scraping/disney_land.rb"
+    - "app/models/scraping/disney_sea.rb"
+Metrics/AbcSize:
+  Exclude:
+    - "app/models/scraping/disney_land.rb"
+    - "app/models/scraping/disney_sea.rb"
